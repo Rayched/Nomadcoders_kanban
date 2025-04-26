@@ -10,6 +10,10 @@ export const HourSelectors = selector({
     get: ({get}) => {
         const MinuteValues = get(MinuteAtoms);
         const Hours = MinuteValues !== "" ? Number(MinuteValues) / 60 : ""
-        return Hours;
+        return String(Hours);
     },
-})
+    set({set}, newValue) {
+        const Convert = newValue === "" ? "" : Number(newValue) * 60;
+        set(MinuteAtoms, String(Convert));
+    },
+});

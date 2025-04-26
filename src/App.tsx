@@ -3,8 +3,12 @@ import { useRecoilState, useRecoilValue } from 'recoil';
 import { HourSelectors, MinuteAtoms } from './atoms';
 
 function App() {
-  const Hours = useRecoilValue(HourSelectors);
+  const [Hours, setHours] = useRecoilState(HourSelectors);
   const [Minutes, setMinutes] = useRecoilState(MinuteAtoms);
+
+  const HoursChange = (event: React.FormEvent<HTMLInputElement>) => {
+    setHours(event.currentTarget.value);
+  };
 
   const MinutesChange = (event: React.FormEvent<HTMLInputElement>) => {
     setMinutes(event.currentTarget.value);
@@ -15,7 +19,12 @@ function App() {
       <h3>시간 단위 변환계</h3>
       <div>
         <label>시 Hour</label>
-        <input type='text' placeholder='Hours' value={Hours}/>
+        <input 
+          type='text' 
+          placeholder='Hours' 
+          value={Hours}
+          onChange={HoursChange}
+        />
       </div>
       <div>
         <label>분 Minute</label>
