@@ -62,7 +62,6 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <RecoilRoot>
-      <GlobalStyle />
       <App />
     </RecoilRoot>
   </React.StrictMode>
